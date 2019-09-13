@@ -4,6 +4,10 @@
 
 - Detalhamento algoritimo RSA
 
+O algoritmo estava dando problemas, pois, não era possível fazer calculos com números muito grandes, principalmente quando se utilizava o resto da divisão(MOD). Para resolver tal problema, foi utilizando a biblioteca BigInteger.js, segue logo abaixo o link da biblioteca disponível no NPM.
+
+https://www.npmjs.com/package/big-integer
+
 - Detalhamento algoritimo El Gamal
 
 ### Materiais ultilizados para o desenvolvimento do algoritomo
