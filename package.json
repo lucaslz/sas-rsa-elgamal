@@ -1,0 +1,28 @@
+{
+  "name": "sas-rsa-elgamal",
+  "version": "1.0.0",
+  "description": "Algoritmo RSA disciplica de Segurança e Auditoria de Sistemas",
+  "main": "rsa.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaslz/sas-rsa-elgamal.git"
+  },
+  "keywords": [
+    "rsa",
+    "algoritmo"
+  ],
+  "author": "Lucas Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucaslz/sas-rsa-elgamal/issues"
+  },
+  "homepage": "https://github.com/lucaslz/sas-rsa-elgamal#readme",
+  "dependencies": {
+    "ascii-hex": "^1.0.1",
+    "big-integer": "^1.6.44",
+    "mathjs": "^6.2.1"
+  }
+}

@@ -2,20 +2,19 @@
 
 ## Desenvolvido para disciplina de SAS (Segurança e Auditoria de Sistemas)
 
-- Detalhamento algoritimo RSA
+### Detalhamento algoritimo RSA
 
 O algoritmo estava dando problemas, pois, não era possível fazer calculos com números muito grandes, principalmente quando se utilizava o resto da divisão(MOD). Para resolver tal problema, foi utilizando a biblioteca BigInteger.js, segue logo abaixo o link da biblioteca disponível no NPM.
 
 https://www.npmjs.com/package/big-integer
 
-- Detalhamento algoritimo El Gamal
 
-### Materiais ultilizados para o desenvolvimento do algoritomo
+#### Materiais ultilizados para o desenvolvimento do algoritomo
 
 - Vídeo explicando o algoritmo RSA: https://www.youtube.com/watch?v=yqo3Xa06tZc&t=319s
 - Material do Wikpedia: https://pt.wikipedia.org/wiki/RSA_(sistema_criptogr%C3%A1fico)
 
-#### Artigos
+##### Artigos para o algoritmo RSA
 
 - ANDRADE, Rafael Santos; SILVA, Fernando dos Santos. Algoritmo de criptografia RSA: análise entre a segurança e velocidade. Eventos Pedagógicos, v. 3, n. 3, p. 438-457, 2012.
 
@@ -32,3 +31,29 @@ https://www.npmjs.com/package/big-integer
 - VILLENA, Reynaldo C. Reconstrução da Chave Privada RSA. 2012.
 
 - SOUSA, Antonio Nilson Laurindo. Criptografia de chave pública, criptografia RSA. 2013. 57 f. Dissertação (mestrado) - Universidade Estadual Paulista Júlio de Mesquita Filho, Instituto de Geociências e Ciências Exatas, 2013. Disponível em: <http://hdl.handle.net/11449/94349>.
+
+
+##### O Algoritmo RSA foi baseado principalmente nos seguintes materiais
+
+- Explicação do código: https://www.youtube.com/watch?v=yqo3Xa06tZc&t=319s
+
+- Explicação do algoritmo: https://pt.wikipedia.org/wiki/RSA_(sistema_criptogr%C3%A1fico)
+
+- Algoritmo readaptado: https://github.com/denysdovhan/rsa-labwork
+
+
+### Detalhamento algoritimo El Gamal
+
+    - Em produção
+
+#### Materiais ultilizados para o desenvolvimento do algoritomo
+
+    - Em produção
+
+##### Artigos para o algoritmo El Gamal
+
+    - Em produção
+
+##### O Algoritmo RSA foi baseado principalmente nos seguintes materiais
+
+    - Em produção
