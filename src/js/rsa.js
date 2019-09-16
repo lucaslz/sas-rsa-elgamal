@@ -1,9 +1,4 @@
 /**
- * Importação de bibliotecas
- */
-var bigInt = require("big-integer")
-
-/**
  * Algoritimo RSA
  * 
  * JavaScript Object Literal
@@ -31,8 +26,10 @@ const RSA = {
         let totient = 0;
 
         do {
-            this.numeroPrimoP = this.primoAleatorio()
-            this.numeroPrimoQ = this.primoAleatorio()
+            if (this.numeroPrimoP < 1 || this.numeroPrimoQ < 1) {
+                this.numeroPrimoP = this.primoAleatorio()
+                this.numeroPrimoQ = this.primoAleatorio()
+            }
             totient = bigInt.lcm(this.numeroPrimoP.prev(), this.numeroPrimoQ.prev())
         } while (
             bigInt.gcd(e, totient).notEquals(1) ||
@@ -80,21 +77,33 @@ const RSA = {
             }
         }
         return mensagem;
+    },
+
+    codificaEncripta: function(e, n) {
+        let mensagemCodificada = this.codificar()
+        let mensagemEncriptada = this.encriptar(mensagemCodificada, e, n)
+        return mensagemEncriptada
+    },
+
+    decriptaDecodifica: function (mensagemEncriptada, d, n) {
+        let mensagemDecriptada = RSA.decriptar(mensagemEncriptada, d, n)
+        let mensagemDecodificada = RSA.decodificar(mensagemDecriptada)
+        return mensagemDecodificada
     }
 }
 
-RSA.tamanhoChave = 1024
-let chaves = RSA.gerarChaves()
-RSA.mensagem = "Olá Mundo!"
+// RSA.tamanhoChave = 1024
+// let chaves = RSA.gerarChaves()
+// RSA.mensagem = "Olá Mundo!"
 
-let mensagemCodificada = RSA.codificar()
-let mensagemEncriptada = RSA.encriptar(mensagemCodificada, chaves.e, chaves.n)
+// let mensagemCodificada = RSA.codificar()
+// let mensagemEncriptada = RSA.encriptar(mensagemCodificada, chaves.e, chaves.n)
 
-let mensagemDecriptada = RSA.decriptar(mensagemEncriptada, chaves.d, chaves.n)
-let mensagemDecodificada = RSA.decodificar(mensagemDecriptada)
-console.log({
-    "Mensagem Codificada" : mensagemCodificada.toString(),
-    "Mensagem Encriptada" : mensagemEncriptada.toString(),
-    "Mensagem Decriptada" : mensagemDecriptada.toString(),
-    "Mensagem Decodificada" : mensagemDecodificada
-})
+// let mensagemDecriptada = RSA.decriptar(mensagemEncriptada, chaves.d, chaves.n)
+// let mensagemDecodificada = RSA.decodificar(mensagemDecriptada)
+// console.log({
+//     "Mensagem Codificada" : mensagemCodificada.toString(),
+//     "Mensagem Encriptada" : mensagemEncriptada.toString(),
+//     "Mensagem Decriptada" : mensagemDecriptada.toString(),
+//     "Mensagem Decodificada" : mensagemDecodificada
+// })

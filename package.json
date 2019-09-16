@@ -21,8 +21,6 @@
   },
   "homepage": "https://github.com/lucaslz/sas-rsa-elgamal#readme",
   "dependencies": {
-    "ascii-hex": "^1.0.1",
-    "big-integer": "^1.6.44",
-    "mathjs": "^6.2.1"
+    "big-integer": "^1.6.44"
   }
 }

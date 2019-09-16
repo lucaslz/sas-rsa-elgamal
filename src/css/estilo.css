@@ -1,0 +1,22 @@
+body{
+  font-family: 'Aladin'  ;
+  background-color: #f3f3f3;
+  font-size: 16px;
+}
+
+#conteudo_do_sistema{
+  margin: 20px auto 20px auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 15px;
+
+}
+
+.laranja{
+  color: #FF4000;
+}
+
+hr.line-grey {
+  border: 3px solid grey;
+  border-radius: 5px;
+}
