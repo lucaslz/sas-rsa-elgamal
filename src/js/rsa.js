@@ -1,19 +1,22 @@
 /**
  * Algoritimo RSA
- * 
+ *
  * JavaScript Object Literal
  */
 const RSA = {
-    
-    tamanhoChave: 128,
+
+    tamanhoChave: 256,
     numeroPrimoP: 0,
     numeroPrimoQ: 0,
     mensagem: "",
 
     primoAleatorio: function() {
         let bits = this.tamanhoChave / 2
-        const minimo = bigInt.one.shiftLeft(bits - 1)
-        const maximo = bigInt.one.shiftLeft(bits).prev()
+        const minimo = bigInt(bits, 100).shiftLeft(bits - 1)
+        const maximo = bigInt(bits, 100).shiftLeft(bits).prev()
+        // console.log(minimoOne, maximoOne)
+        // const minimo = bigInt.one.shiftLeft(bits - 1)
+        // const maximo = bigInt.one.shiftLeft(bits).prev()
 
         while (true) {
             let p = bigInt.randBetween(minimo, maximo)
@@ -22,19 +25,34 @@ const RSA = {
     },
 
     gerarChaves: function() {
+        // if (this.numeroPrimoP < 1 || this.numeroPrimoQ < 1) {
+        //     this.numeroPrimoP = this.primoAleatorio()
+        //     this.numeroPrimoQ = this.primoAleatorio()
+        // }else {
+        //     this.numeroPrimoP = bigInt(this.numeroPrimoP)
+        //     this.numeroPrimoQ = bigInt(this.numeroPrimoQ)
+        // }
+
+        // let m = bigInt((this.numeroPrimoP.subtract(bigInt.one)).multiply(this.numeroPrimoQ.subtract(bigInt.one)))
+        // let e = new bigInt("3")
+        // while (bigInt.gcd(m, e).toString() > 1) e = e.add(bigInt("2"))
+
         const e = bigInt(65537)
         let totient = 0;
-
-        do {
-            if (this.numeroPrimoP < 1 || this.numeroPrimoQ < 1) {
+        if (this.numeroPrimoP < 1 || this.numeroPrimoQ < 1) {
+            do {
                 this.numeroPrimoP = this.primoAleatorio()
                 this.numeroPrimoQ = this.primoAleatorio()
-            }
+                totient = bigInt.lcm(this.numeroPrimoP.prev(), this.numeroPrimoQ.prev())
+            } while (
+                bigInt.gcd(e, totient).notEquals(1) ||
+                this.numeroPrimoP.minus(this.numeroPrimoQ).abs().shiftRight((this.tamanhoChave / 2) - 100).isZero()
+            )
+        } else {
+            this.numeroPrimoP = bigInt(this.numeroPrimoP)
+            this.numeroPrimoQ = bigInt(this.numeroPrimoQ)
             totient = bigInt.lcm(this.numeroPrimoP.prev(), this.numeroPrimoQ.prev())
-        } while (
-            bigInt.gcd(e, totient).notEquals(1) ||
-            this.numeroPrimoP.minus(this.numeroPrimoQ).abs().shiftRight((this.tamanhoChave / 2) - 100).isZero()
-        )
+        }
 
         return {
             e,
@@ -65,10 +83,10 @@ const RSA = {
     decodificar: function(mensagemDecriptada) {
         const stringCode = mensagemDecriptada.toString();
         let mensagem = '';
-    
+
         for (let i = 0; i < stringCode.length; i += 2) {
           let numero = Number(stringCode.substr(i, 2));
-          
+
             if (numero <= 30) {
                 mensagem += String.fromCharCode(Number(stringCode.substr(i, 3)));
                 i++;
@@ -91,19 +109,3 @@ const RSA = {
         return mensagemDecodificada
     }
 }
-
-// RSA.tamanhoChave = 1024
-// let chaves = RSA.gerarChaves()
-// RSA.mensagem = "Olá Mundo!"
-
-// let mensagemCodificada = RSA.codificar()
-// let mensagemEncriptada = RSA.encriptar(mensagemCodificada, chaves.e, chaves.n)
-
-// let mensagemDecriptada = RSA.decriptar(mensagemEncriptada, chaves.d, chaves.n)
-// let mensagemDecodificada = RSA.decodificar(mensagemDecriptada)
-// console.log({
-//     "Mensagem Codificada" : mensagemCodificada.toString(),
-//     "Mensagem Encriptada" : mensagemEncriptada.toString(),
-//     "Mensagem Decriptada" : mensagemDecriptada.toString(),
-//     "Mensagem Decodificada" : mensagemDecodificada
-// })
