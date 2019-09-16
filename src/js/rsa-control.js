@@ -35,19 +35,19 @@ const rsaControl = () => {
     if (campoNumeroPrimoQ.value  == 0 || campoNumeroPrimoQ.value == null) campoNumeroPrimoQ.value = RSA.numeroPrimoQ
 
     //Setando a chave publica
-    let chavePublica = "------------------------- CHAVE PUBLICA -------------------------\n"
+    let chavePublica = "--------------------- CHAVE PUBLICA ---------------------\n"
     let chavePublicaBase64 = chaves.e.toString()
     chavePublicaBase64 += chaves.n.toString()
     chavePublica += btoa(chavePublicaBase64)
-    chavePublica += "\n---------------------------------------------------------------"
+    chavePublica += "\n-------------------------------------------------------"
     let campoChavePublica = document.getElementById("chave-publica")
     campoChavePublica.value = chavePublica
 
     //Setando a chave privada
-    let chavePrivada = "------------------------- CHAVE PRIVADA -------------------------\n"
+    let chavePrivada = "--------------------- CHAVE PRIVADA ---------------------\n"
     let chavePrivadaBase64 = chaves.d.toString()
     chavePrivada += btoa(chavePrivadaBase64)
-    chavePrivada += "\n---------------------------------------------------------------"
+    chavePrivada += "\n-------------------------------------------------------"
     let campoChavePrivada = document.getElementById("chave-privada")
     campoChavePrivada.value = chavePrivada
 
