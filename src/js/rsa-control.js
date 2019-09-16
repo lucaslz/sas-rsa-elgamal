@@ -10,7 +10,6 @@ const rsaControl = () => {
 
     // Pegando o trabalho da chave
     let campoBitsChave = document.getElementById("quantidade-bits")
-    if (campoBitsChave.value < 256) { alert("Por digit um numero maior que 256"); return; }
     if (campoBitsChave.value != 0 && campoBitsChave.value != null) RSA.tamanhoChave = parseInt(campoBitsChave.value)
     else campoBitsChave.value = RSA.tamanhoChave
 
